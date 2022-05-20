@@ -1,0 +1,12 @@
+{
+  "name": "canyoucrackthecode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^17.0.34",
+    "lodash": "^4.17.21",
+    "readline-sync": "^1.4.10"
+  }
+}
