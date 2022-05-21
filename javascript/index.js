@@ -5,6 +5,7 @@ String.prototype.pow = function (n) {
   return o;
 };
 
+const { isObjectLike } = require("lodash");
 const _ = require("lodash");
 const rls = require("readline-sync");
 
@@ -27,6 +28,21 @@ function checkAndExit(prop,where) {
     console.log("Something wrong",where)
     process.exit(1);
   }
+}
+function check_pos(item,rule,is_right) {
+  let rm = !is_right
+  for(let i=0;i<item.length;i++){
+    if (is_right) rm = rm || is_right&&rule[i]==item[i]
+    else if (rule[i]==item[i]) return false
+  }
+  return rm
+}
+function check_count(item,rule,count,Pos=false){
+  let j=0
+  for(let i=0;i<item.length;i++){
+    j+=((Pos)?_.includes(rule,item[i]):item[i]==rule[i])?1:0
+  }
+  return j==count
 }
 
 let amount = rls.questionInt("Key length: ");
@@ -143,7 +159,6 @@ if (_.filter(trwp, (el) => el != rep_sym).length < amount - 1) {
 orpr = _.map(orpr, (el, k) => {
   if (el != rep_sym) {
     if (el == orwp1[k] || el == orwp2[k] || el == trwp[k]) {
-      let rm = el;
       _.indexOf(orwp1, el) != -1 && (orwp1[_.indexOf(orwp1, el)] = rep_sym);
       _.indexOf(orwp2, el) != -1 && (orwp2[_.indexOf(orwp2, el)] = rep_sym);
       _.indexOf(trwp, el) != -1 && (trwp[_.indexOf(trwp, el)] = rep_sym);
@@ -157,69 +172,25 @@ let left = _.filter(
   _.uniq([...orpr, ...orwp1, ...orwp2, ...trwp]),
   (el) => el != rep_sym
 ).sort();
+
 let all_posible = _.filter(
   allPossibleCombinations(left, amount, ""),
   (el) => _.uniq(el.split("")).length == amount
 );
-all_posible = _.filter(all_posible, (el) => {
-  let inc = false;
-  for (let i = 0; i < amount; i++) {
-    inc = inc || orpr[i] == el[i];
-  }
-  return inc;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  let inc = 0;
-  for (let i = 0; i < amount; i++) {
-    if (_.includes(_.split(el, ""), trwp[i])) inc++;
-  }
-  return inc == amount - 1;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  let inc = 0;
-  for (let i = 0; i < amount; i++) {
-    if (_.includes(_.split(el, ""), orwp1[i])) inc++;
-  }
-  return inc == amount - 2;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  let inc = 0;
-  for (let i = 0; i < amount; i++) {
-    if (_.includes(_.split(el, ""), orwp2[i])) inc++;
-  }
-  return inc == amount - 2;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  let inc = 0;
-  for (let i = 0; i < amount; i++) {
-    if (el[i] === orpr[i]) inc++;
-  }
-  return inc == amount - 2;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  for (let i = 0; i < amount; i++) {
-    if (el[i] == trwp[i]) return false;
-  }
-  return true;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  for (let i = 0; i < amount; i++) {
-    if (el[i] == orwp1[i]) return false;
-  }
-  return true;
-});
-checkAndExit(all_posible);
-all_posible = _.filter(all_posible, (el) => {
-  for (let i = 0; i < amount; i++) {
-    if (el[i] == orwp2[i]) return false;
-  }
-  return true;
-});
-checkAndExit(all_posible);
+all_posible = _.filter(all_posible, (el) => check_pos(el,orpr,true));
+checkAndExit(all_posible,"orpr");
+all_posible = _.filter(all_posible, (el) => check_count(el,trwp,amount-1));
+checkAndExit(all_posible,"trwp(2)");
+all_posible = _.filter(all_posible, (el) => check_count(el,orwp1,amount-2));
+checkAndExit(all_posible,"orwp1(2)");
+all_posible = _.filter(all_posible, (el) => check_count(el,orwp2,amount-2));
+checkAndExit(all_posible,"orwp2(2)");
+all_posible = _.filter(all_posible, (el) => check_count(el,orpr,amount-2,true));
+checkAndExit(all_posible,"orpr(2)");
+all_posible = _.filter(all_posible, (el) => check_pos(el,trwp,false));
+checkAndExit(all_posible,"trwp");
+all_posible = _.filter(all_posible, (el) => check_pos(el,orwp1,false));
+checkAndExit(all_posible,"orwp1");
+all_posible = _.filter(all_posible, (el) => check_pos(el,orwp2,false));
+checkAndExit(all_posible,"orwp2");
 console.log(all_posible.length,all_posible)
