@@ -5,7 +5,6 @@ String.prototype.pow = function (n) {
   return o;
 };
 
-const { isObjectLike } = require("lodash");
 const _ = require("lodash");
 const rls = require("readline-sync");
 
