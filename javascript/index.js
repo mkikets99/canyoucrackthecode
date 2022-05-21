@@ -19,10 +19,13 @@ function allPossibleCombinations(input, length, curstr) {
   }
   return ret;
 }
-function checkAndExit(prop) {
+function checkAndExit(prop,where) {
   if (prop.length == 1) {
     console.log("Result:", prop[0]);
     process.exit(0);
+  }else if (prop.length == 0){
+    console.log("Something wrong",where)
+    process.exit(1);
   }
 }
 
@@ -219,3 +222,4 @@ all_posible = _.filter(all_posible, (el) => {
   return true;
 });
 checkAndExit(all_posible);
+console.log(all_posible.length,all_posible)
