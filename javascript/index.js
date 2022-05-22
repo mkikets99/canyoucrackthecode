@@ -39,7 +39,7 @@ function check_pos(item,rule,is_right) {
 function check_count(item,rule,count,Pos=false){
   let j=0
   for(let i=0;i<item.length;i++){
-    j+=((Pos)?_.includes(rule,item[i]):item[i]==rule[i])?1:0
+    j+=((!Pos)?_.includes(rule,item[i]):item[i]==rule[i])?1:0
   }
   return j==count
 }

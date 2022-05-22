@@ -3,7 +3,8 @@ This is a solution to check if there is a solution for solving code in the game 
 
 Solution is made with using different languages, so you can analize how it make that solution.
 
-| Programming Language | Solution ready | How well is it made | Modules used |
+| Programming Language | Solution ready | How well is it made | Modules/Libs/Functions used |
 |---|---|---|---|
 | Javascript | Yes | Fair enough (there is a posibility for having up to 3 solutions with 4 length code) | <ul><li>lodash</li><li>readline-sync</li></ul> |
 | Python | Yes | Fair enough (there is a posibility for having up to 3 solutions with 4 length code) | <ul><li>itertools.product</li><li>collections.Counter</li><li>re.search</li></ul> |
+| C/C++ | Yes | Fair enough (there is a posibility for having up to 3 solutions with 4 length code) | <ul><li>iostream</li><li>vector</li><li>string</li><li>algorithm</li><li>iterator</li></ul> |
