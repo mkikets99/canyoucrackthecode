@@ -1,6 +1,11 @@
+#ignore for js
 node_modules
-*.o
+#import cpp
+cpp/*
 !cpp/main.o
+!cpp/build.sh
+!cpp/canyoucrackthecode.cpp
 #this contain test data
 /test 
+#no vscode
 .vscode
