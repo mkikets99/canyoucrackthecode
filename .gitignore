@@ -3,3 +3,4 @@ node_modules
 !cpp/main.o
 #this contain test data
 /test 
+.vscode
