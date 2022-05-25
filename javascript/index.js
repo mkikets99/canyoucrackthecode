@@ -1,10 +1,4 @@
 // Can you crack the code solver
-String.prototype.pow = function (n) {
-  let o = "";
-  for (let i = 0; i < n; i++) o += this;
-  return o;
-};
-
 const _ = require("lodash");
 const rls = require("readline-sync");
 
