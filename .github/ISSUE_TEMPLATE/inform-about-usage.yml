@@ -3,7 +3,6 @@ description: You want to use it somewhere? Please feel free to inform us where t
   be used.
 title: "[Usage Inform]: "
 labels: ["Usage Inform"]
-assignees: ''
 body:
   - type: markdown
     attributes:
