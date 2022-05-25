@@ -18,6 +18,8 @@ body:
         - Educational use
         - Personal use
         - Secret/Private information
+    validations:
+      required: true
   - type: dropdown
     id: usage-purpose
     attributes:
@@ -29,6 +31,8 @@ body:
         - Use in Project
         - Secret/Private information
         - Test cases
+    validations:
+      required: true
   - type: dropdown
     id: usage-where
     attributes:
@@ -41,11 +45,16 @@ body:
         - Commercial Project
         - Generating test cases
         - Teach how to code
+    validations:
+      required: true
   - type: input
     id: usage-name
     attributes:
       label: Name of "Usage Location"
-      description: Provide a name of project where it will be used. If it is for school/collage/university learning, provide an international name of institution. If usage is a secret - just write "Secret" or "None"
+      description: |
+        Provide a name of project where it will be used. 
+        If it is for school/collage/university learning, provide an international name of institution. 
+        If usage is a secret - just write "Secret" or "None"
     validations:
       required: true
   - type: textarea
