@@ -3,7 +3,7 @@ description: You want to use it somewhere? Please feel free to inform us where t
   be used.
 title: "[Usage Inform]: "
 labels: ["Usage Inform"]
-assignees: 
+assignees: ''
 body:
   - type: markdown
     attributes:
@@ -47,10 +47,12 @@ body:
     attributes:
       label: Name of "Usage Location"
       description: Provide a name of project where it will be used. If it is for school/collage/university learning, provide an international name of institution. If usage is a secret - just write "Secret" or "None"
+    validations:
       required: true
   - type: textarea
     id: usage-desc
     attributes:
       label: Some more inforamton
       description: "Describe at least something: what will be used, in which case, etc."
+    validations:
       required: false
