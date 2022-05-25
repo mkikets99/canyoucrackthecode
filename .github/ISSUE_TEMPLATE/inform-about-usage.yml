@@ -1,0 +1,56 @@
+name: Inform about usage
+description: You want to use it somewhere? Please feel free to inform us where this will
+  be used.
+title: "[Usage Inform]: "
+labels: ["Usage Inform"]
+assignees: 
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks that you desided to use it (or at least part of it) somewhere. Feel free to inform us at least something that you can about where it will be used
+  - type: dropdown
+    id: usage-type
+    attributes:
+      label: Usage type
+      description: What type of use will be intended?
+      options:
+        - Commertial use
+        - Educational use
+        - Personal use
+        - Secret/Private information
+  - type: dropdown
+    id: usage-purpose
+    attributes:
+      label: Purpose
+      description: Is it a project or something else?
+      options:
+        - Learning code
+        - Other
+        - Use in Project
+        - Secret/Private information
+        - Test cases
+  - type: dropdown
+    id: usage-where
+    attributes:
+      label: Where it will be used 
+      description: It is for generating something or just a request for use it?
+      options:
+        - Generating answers for game
+        - Other
+        - School/Collage/University Project
+        - Commercial Project
+        - Generating test cases
+        - Teach how to code
+  - type: input
+    id: usage-name
+    attributes:
+      label: Name of "Usage Location"
+      description: Provide a name of project where it will be used. If it is for school/collage/university learning, provide an international name of institution. If usage is a secret - just write "Secret" or "None"
+      required: true
+  - type: textarea
+    id: usage-desc
+    attributes:
+      label: Some more inforamton
+      description: "Describe at least something: what will be used, in which case, etc."
+      required: false
